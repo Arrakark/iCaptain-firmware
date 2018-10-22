@@ -4,6 +4,7 @@ SoftwareSerial gps_serial = SoftwareSerial(13, 15, false, 256);
 SoftwareSerial bt_serial = SoftwareSerial(12, 14, false, 256);
 SSD1306 display(0x3c, D2, D1);
 TinyGPSPlus gps;
+CmdMessenger cmdMessenger = CmdMessenger(Serial);
 
 autopilot::autopilot()
 {
@@ -50,32 +51,41 @@ void autopilot::update_display()
     {
         display.drawString(64, 0, "AUTOPILOT");
     }
-    if (gps.speed.isValid() && gps.course.isValid() && gps.location.isValid())
+    display.setFont(ArialMT_Plain_10);
+    if (gps.location.isValid())
     {
-        display.setFont(ArialMT_Plain_10);
-        display.drawString(64, 16, String("Course: ") + String(gps.course.deg(), 6));
-        display.drawString(64, 26, String("Speed (knots): ") + String(gps.speed.knots(), 6));
+        display.drawString(64, 16, String(gps.location.lat(), 4) + " " + String(gps.location.lng(), 4));
     }
     else
     {
-        display.setFont(ArialMT_Plain_16);
-        if (!gps.course.isValid())
-        {
-            display.drawString(64, 16, "Invalid Course");
-        }
-        else if (!gps.speed.isValid())
-        {
-            display.drawString(64, 16, "Invalid Speed");
-        }
-        else if (!gps.location.isValid())
-        {
-            display.drawString(64, 16, "Invalid Location");
-        }
-        else
-        {
-            display.drawString(64, 16, "No GPS Lock");
-        }
+        display.drawString(64, 16, "NO GPS LOCK");
     }
+    String second_line = String();
+    if (gps.hdop.isValid())
+    {
+        second_line = "HD:" + String(gps.hdop.hdop(), 1);
+    }
+    else
+    {
+        second_line = "-";
+    }
+    if (gps.course.isValid())
+    {
+        second_line = second_line + " H:" + String((int)gps.course.deg());
+    }
+    else
+    {
+        second_line = second_line + " -";
+    }
+    if (gps.speed.isValid())
+    {
+        second_line = second_line + " S:" + String(gps.speed.knots(), 1);
+    }
+    else
+    {
+        second_line = second_line + " -";
+    }
+    display.drawString(64, 26, second_line);
     display.display();
 }
 
