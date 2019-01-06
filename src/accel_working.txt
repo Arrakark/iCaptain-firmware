@@ -1,0 +1,33 @@
+// Bounce.pde
+// -*- mode: C++ -*-
+//
+// Make a single stepper bounce from one limit to another
+//
+// Copyright (C) 2012 Mike McCauley
+// $Id: Random.pde,v 1.1 2011/01/05 01:51:01 mikem Exp mikem $
+#include <AccelStepper.h>
+
+#define PULSE D3 //black wire (near -)
+#define DIR 10 //yellow Wire (middle)
+#define ENABLE 2 //white wire (end)
+// Define a stepper and the pins it will use
+AccelStepper stepper(AccelStepper::DRIVER, PULSE, DIR);
+void setup()
+{ 
+  //pinMode(ENABLE, OUTPUT);
+  //digitalWrite(ENABLE, LOW);
+    stepper.setEnablePin(ENABLE);
+stepper.setMinPulseWidth(20);
+//stepper.setPinsInverted(false,false,true);
+  // Change these to suit your stepper if you want
+  stepper.setMaxSpeed(100);
+  stepper.setAcceleration(100);
+  stepper.moveTo(200);
+}
+void loop()
+{
+    // If at the end of travel go to the other end
+    while (stepper.distanceToGo() != 0)
+      stepper.moveTo(-stepper.currentPosition());
+    stepper.run();
+}
