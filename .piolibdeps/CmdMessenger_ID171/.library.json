@@ -1,0 +1,52 @@
+{
+    "name": "CmdMessenger", 
+    "keywords": [
+        "protocol", 
+        "message", 
+        "communication", 
+        "serial"
+    ], 
+    "description": "A serial messaging library for the Arduino and .NET/Mono platform.", 
+    "version": "4.1.0", 
+    "authors": [
+        {
+            "email": null, 
+            "url": "http://thijs.elenbaas.net/about", 
+            "maintainer": false, 
+            "name": "Thijs Elenbaas"
+        }, 
+        {
+            "email": null, 
+            "url": "https://github.com/valkuc", 
+            "maintainer": false, 
+            "name": "Valeriy Kucherenko"
+        }
+    ], 
+    "repository": {
+        "type": "git", 
+        "url": "https://github.com/thijse/Arduino-CmdMessenger.git"
+    }, 
+    "dependencies": [
+        {
+            "name": "PID", 
+            "frameworks": "arduino"
+        }
+    ], 
+    "frameworks": [
+        "arduino"
+    ], 
+    "platforms": [
+        "atmelavr", 
+        "atmelsam", 
+        "espressif32", 
+        "espressif8266", 
+        "intel_arc32", 
+        "microchippic32", 
+        "nordicnrf51", 
+        "nordicnrf52", 
+        "ststm32", 
+        "teensy", 
+        "timsp430"
+    ], 
+    "id": 171
+}

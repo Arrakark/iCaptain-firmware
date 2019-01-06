@@ -1,0 +1,37 @@
+{
+    "name": "aREST", 
+    "keywords": [
+        "rest", 
+        "wifi", 
+        "ethernet", 
+        "http", 
+        "web", 
+        "server", 
+        "json", 
+        "spi"
+    ], 
+    "description": "RESTful API for Arduino using HTTP or Serial communications", 
+    "repository": {
+        "type": "git", 
+        "url": "https://github.com/marcoschwartz/aREST.git"
+    }, 
+    "frameworks": [
+        "arduino"
+    ], 
+    "platforms": [
+        "atmelavr", 
+        "atmelsam", 
+        "espressif8266", 
+        "teensy"
+    ], 
+    "version": "3d766c9f34", 
+    "authors": [
+        {
+            "email": null, 
+            "url": "https://github.com/marcoschwartz", 
+            "maintainer": false, 
+            "name": "marcoschwartz"
+        }
+    ], 
+    "id": 429
+}
