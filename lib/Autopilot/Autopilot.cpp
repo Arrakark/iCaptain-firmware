@@ -28,6 +28,9 @@ void autopilot::init()
     motor.setMinPulseWidth(20);
     motor.setAcceleration(100);
     motor.setMaxSpeed(100);
+    motor.setEnablePin(ENABLE);
+    motor.setPinsInverted(false,false,true);
+
     //init display and say hello!
     display.init();
     display.flipScreenVertically();
@@ -36,6 +39,7 @@ void autopilot::init()
     display.drawString(64, 24, "iCaptain Autopilot");
     display.display();
     delay(500);
+    motor.disableOutputs();
 }
 
 void autopilot::update_display()
@@ -159,6 +163,7 @@ int autopilot::set_state(String command)
             waypoint_long = gps.location.lng();
             heading = gps.course.deg();
             state = 3;
+            motor.enableOutputs();
             return 1;
         }
         else
@@ -172,12 +177,14 @@ int autopilot::set_state(String command)
     if (new_state == 2)
     {
         state = 2;
+        motor.enableOutputs();
         return 1;
     }
     //setting state to OFFLINE
     if (new_state == 1)
     {
         state = 1;
+        motor.disableOutputs();
         return 1;
     }
     return 0;

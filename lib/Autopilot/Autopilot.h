@@ -9,7 +9,7 @@
 //MOTOR DEFINE
 #define PULSE D3 //black wire (near -)
 #define DIR 10 //yellow Wire (middle)
-#define ENABLE 9 //white wire (end)
+#define ENABLE D0 //white wire (end)
 
 #define R 6371008.8
 
