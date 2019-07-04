@@ -1,0 +1,50 @@
+{
+    "name": "L293", 
+    "version": "4.0.2", 
+    "keywords": [
+        "device", 
+        "control"
+    ], 
+    "description": "A library to control motors with the L293x motor driver and L298x compatible modules", 
+    "frameworks": [
+        "arduino"
+    ], 
+    "platforms": [
+        "atmelavr", 
+        "atmelsam", 
+        "espressif32", 
+        "espressif8266", 
+        "intel_arc32", 
+        "microchippic32", 
+        "nordicnrf51", 
+        "nordicnrf52", 
+        "ststm32", 
+        "teensy", 
+        "timsp430"
+    ], 
+    "authors": [
+        {
+            "email": "qub1750ul", 
+            "url": null, 
+            "maintainer": true, 
+            "name": "Giuseppe Masino"
+        }
+    ], 
+    "repository": {
+        "type": "git", 
+        "url": "https://github.com/HackerInside0/Arduino_L293"
+    }, 
+    "homepage": "https://github.com/qub1750ul/Arduino_L293.git", 
+    "export": {
+        "include": null, 
+        "exclude": [
+            "extras", 
+            "docs", 
+            "tests", 
+            "test", 
+            "*.doxyfile", 
+            "*.pdf"
+        ]
+    }, 
+    "id": 853
+}
